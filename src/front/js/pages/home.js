@@ -26,19 +26,27 @@ export const Home = (props) => {
 		<>
 			<div className="text-center mt-5">
 				<h1>Family!!</h1>
-				<button className="btn btn-outline-primary m-3" onClick={view}>View Family</button>
 				<button className="btn btn-outline-primary">Create a new person</button>
+				<div className="container text-center d-flex mt-5">
+					<Card
+						name={<input type="text" placeholder="Name"/>}
+						age={<input type="number" placeholder="Age"/>}
+						lucky_numbers={<input type="number" placeholder="Lucky_numbers"/>}
+						btn=<button className="btn btn-outline-primary">Create</button>
+					/>
+				</div>
+				<button className="btn btn-outline-primary m-3" onClick={view}>View Family</button>
 				<div className="container text-center d-flex mt-5">
 				{result.Family?.map((element, index) => {
 					return (
 						<>
 							<Card
 								name={element.first_name+" "+element.last_name}
-								age={element.age}
-								lucky_numbers={element.lucky_numbers}
+								age={"Age: "+element.age}
+								lucky_numbers={"Lucky_numbers: "+element.lucky_numbers}
 								first_name={"View "+element.first_name}
 								btn=<Link to={"/person/"+(element.id)}>
-					    			<button className="btn btn-outline-primary">{element.first_name}</button>
+					    			<button className="btn btn-outline-primary">{"View "+element.first_name}</button>
                     			</Link>
 				
 							/>

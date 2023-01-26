@@ -38,8 +38,8 @@ export const Person = (props) => {
             <div className="container text-center d-flex mt-5" style={{width: "100rem"}}>
                 <Card
                     name={result.Person?.first_name+" "+result.Person?.last_name}
-                    age={result.Person?.age}
-                    lucky_numbers={result.Person?.lucky_numbers}
+                    age={"Age: "+result.Person?.age}
+                    lucky_numbers={"Lucky_numbers: "+result.Person?.lucky_numbers}
                     first_name= "Return"
                     btn={
                     <>
