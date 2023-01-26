@@ -3,8 +3,10 @@ import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { element } from "prop-types";
+import { Card } from "../component/card";
+import { Link } from "react-router-dom";
 
-export const Home = () => {
+export const Home = (props) => {
 	const { store, actions } = useContext(Context);
 	const [result, setResult] = useState([])
 
@@ -24,15 +26,32 @@ export const Home = () => {
 		<>
 			<div className="text-center mt-5">
 				<h1>Family!!</h1>
-				<button onClick={view}>View Family</button>
-				{result.map((element) => {
+				<button className="btn btn-outline-primary m-3" onClick={view}>View Family</button>
+				<button className="btn btn-outline-primary">Create a new person</button>
+				<div className="container text-center d-flex mt-5">
+				{result.Family?.map((element, index) => {
 					return (
-						<div className="container">
-							<p>{element.first_name}</p>
-						</div>
+						<>
+							<Card
+								name={element.first_name+" "+element.last_name}
+								age={element.age}
+								lucky_numbers={element.lucky_numbers}
+								first_name={"View "+element.first_name}
+								btn=<Link to={"/person/"+(element.id)}>
+					    			<button className="btn btn-outline-primary">{element.first_name}</button>
+                    			</Link>
+				
+							/>
+						</>
 					)
 				})}
-				<div></div>
+				</div>
+				<div className="container text-center mt-5">
+					
+					{/* <Card
+						name="Create a new person:"
+					/> */}
+				</div>
 			</div>
 		</>
 	);

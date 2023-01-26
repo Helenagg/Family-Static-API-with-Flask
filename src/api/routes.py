@@ -37,7 +37,6 @@ def handle_person(id):
     result = person.serialize()
 
     response_body = {
-        "message": "Person",
         "Person": result
     }
 
