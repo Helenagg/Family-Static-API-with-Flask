@@ -4,6 +4,7 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { element } from "prop-types";
 import { Card } from "../component/card";
+import { CreatePerson } from "../component/createPerson";
 import { Link } from "react-router-dom";
 
 export const Home = (props) => {
@@ -26,16 +27,8 @@ export const Home = (props) => {
 		<>
 			<div className="text-center mt-5">
 				<h1>Family!!</h1>
-				<button className="btn btn-outline-primary">Create a new person</button>
-				<div className="container text-center d-flex mt-5">
-					<Card
-						name={<input type="text" placeholder="Name"/>}
-						age={<input type="number" placeholder="Age"/>}
-						lucky_numbers={<input type="number" placeholder="Lucky_numbers"/>}
-						btn=<button className="btn btn-outline-primary">Create</button>
-					/>
-				</div>
-				<button className="btn btn-outline-primary m-3" onClick={view}>View Family</button>
+				<CreatePerson/>
+				<button className="btn btn-outline-primary mt-5" onClick={view}>View Family</button>
 				<div className="container text-center d-flex mt-5">
 				{result.Family?.map((element, index) => {
 					return (
