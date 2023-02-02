@@ -19,8 +19,19 @@ def handle_hello():
 
 @api.route('/signup', methods=['POST'])
 def signup():
+    data = request.data
+    data = json.loads(data)
+    user = User(email = data['email'], password = data['password'], is_active = True)
+    db.session.add(user)
+    db.session.commit()
 
-    user = User()
+    response_body = {
+        "message": "Created user",
+        "User": user.serialize(),
+        "ok": True
+    }
+
+    return jsonify(response_body), 200
 
 @api.route('/family', methods=['GET'])
 def handle_family():
