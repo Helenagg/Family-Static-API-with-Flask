@@ -9,10 +9,11 @@ import { Link, useNavigate } from "react-router-dom";
 
 export const Signup = () => {
 
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [result, setResult] = useState([])
-    const [error, setError] = useState()
+    const [error, setError] = useState("")
 
     const signup = () => {
         var myHeaders = new Headers();
@@ -34,9 +35,7 @@ export const Signup = () => {
         .then(response => response.json())
         .then(result => {
             if(result.ok === true) {
-                <Link to={"/"}/>
-            } else {
-                setError(error)
+                navigate("/")
             }
         })
         .catch(error => console.log('error', error));
@@ -59,7 +58,6 @@ export const Signup = () => {
                             <img src="https://st2.depositphotos.com/3837271/6941/i/950/depositphotos_69417709-stock-photo-text-sign-up.jpg" style={{height: 300}}/>
                         </div>
                     </div>
-                    {/* {error && error <div>} */}
                 </div>
 			</div>
 		</>
