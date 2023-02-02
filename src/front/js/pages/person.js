@@ -14,8 +14,7 @@ export const Person = (props) => {
           };
           
         //   fetch(`${process.env.BACKEND_URL}/api/family`+params.idPerson, requestOptions)
-            fetch("https://3001-4geeksacade-reactflaskh-2s43cxuip9x.ws-eu84.gitpod.io/api/family/"+params.id
-            , requestOptions)
+            fetch(`${process.env.BACKEND_URL}/api/family/`+params.id, requestOptions)
             .then(response => response.json())
             .then(result => setResult(result))
             .catch(error => console.log('error', error));
@@ -27,7 +26,7 @@ export const Person = (props) => {
             redirect: 'follow'
           };
           
-          fetch("https://3001-4geeksacade-reactflaskh-2s43cxuip9x.ws-eu84.gitpod.io/api/family/"+params.id, requestOptions)
+          fetch(`${process.env.BACKEND_URL}/api/family/`+params.id, requestOptions)
             .then(response => response.json())
             .then(result => console.log(result))
             .catch(error => console.log('error', error));

@@ -17,6 +17,11 @@ def handle_hello():
 
     return jsonify(response_body), 200
 
+@api.route('/signup', methods=['POST'])
+def signup():
+
+    user = User()
+
 @api.route('/family', methods=['GET'])
 def handle_family():
     family = Family.query.all()
@@ -51,8 +56,9 @@ def create_person():
     db.session.commit()
 
     response_body = {
-        "message": "Create a new person",
-        "Person": person.serialize()
+        "message": "Created person",
+        "Person": person.serialize(),
+        "ok": True
     }
 
     return jsonify(response_body), 200
@@ -68,3 +74,5 @@ def delete_person(id):
     }
 
     return jsonify(response_body), 200
+
+
